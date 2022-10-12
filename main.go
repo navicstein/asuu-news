@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gocolly/colly/v2"
 )
@@ -16,10 +17,16 @@ type Page struct {
 
 func main() {
 	// example usage: curl -s 'http://127.0.0.1:7171/?url=url'
-	addr := ":7171"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "1337"
+	}
+
+	port = fmt.Sprintf(":%s", port)
+
 	http.HandleFunc("/", scrapperHandler)
-	log.Println("listening on", addr)
-	log.Fatal(http.ListenAndServe(addr, nil))
+	log.Println("listening on", port)
+	log.Fatal(http.ListenAndServe(port, nil))
 }
 
 func scrapAndDo(url string) *Page {
@@ -50,7 +57,7 @@ func scrapAndDo(url string) *Page {
 
 	c.Visit(url)
 
-	fmt.Println("CRAWLING DONE:", page)
+	fmt.Println("generated pages: ", len(page.Paragraphs))
 
 	return page
 }
