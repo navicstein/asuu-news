@@ -9,8 +9,14 @@ import (
 	"github.com/gocolly/colly/v2"
 )
 
+type PageMeta struct {
+	Title       string
+	Description string
+}
+
 type Page struct {
 	Heading    string
+	Meta       PageMeta
 	HeroImage  string
 	Paragraphs []string
 }
@@ -38,6 +44,7 @@ func scrapAndDo(url string) *Page {
 	// Find header
 	c.OnHTML(".entry-title", func(e *colly.HTMLElement) {
 		page.Heading = e.Text
+		page.Meta.Title = e.Text
 	})
 
 	// get static hero image
@@ -47,6 +54,8 @@ func scrapAndDo(url string) *Page {
 
 	c.OnHTML(".post-body.entry-content span", func(e *colly.HTMLElement) {
 		if len(e.Text) > 0 {
+			// add meta info
+			page.Meta.Description = e.Text
 			page.Paragraphs = append(page.Paragraphs, e.Text)
 		}
 	})

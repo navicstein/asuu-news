@@ -3,6 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta content='#1A73E8' name='theme-color'/>
+    <meta content='{{.Meta.Description}}' name='description'/>
+    <link href='{{.HeroImage}}' rel='image_src'/>
+
+    <!-- Metadata for Open Graph protocol. See http://ogp.me/. -->
+    <meta content='en' property='og:locale'/>
+    <meta content='article' property='og:type'/>
+    <meta content='{{.Meta.Title}}' property='og:title'/>
+
+    <meta content='{{.Meta.Description}}' property='og:description'/>
+    <meta content='ASUU News' property='og:site_name'/>
+    <meta content='{{.HeroImage}}' property='og:image'/>
+    <meta content='{{.HeroImage}}' name='twitter:image'/>
+    <meta content='summary_large_image' name='twitter:card'/>
+    <meta content='{{.Meta.Title}}' name='twitter:title'/>
+    <meta content='{{.Meta.Description}}' name='twitter:description'/>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"

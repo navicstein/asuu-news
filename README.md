@@ -2,14 +2,9 @@
 
 remove ads from asuu news website
 
+Navigate to `https://asuu-news-production.up.railway.app/?url=URL`
 
-```sh
-$ go run .
-```
-
-Then navigate to `http://localhost:7171/?url=URL`
-
-where URL is `https://asuu-news-update.blogspot.com/2022/09/strike-nans-backs-fgs-no-work-no-pay.html` or any of the news url
+**where URL is `https://asuu-news-update.blogspot.com/2022/09/strike-nans-backs-fgs-no-work-no-pay.html` or any of the news url
 
 
 
